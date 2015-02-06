@@ -17,6 +17,8 @@ gem 'rspec-rails'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'json'
+gem 'rspec'
+gem 'rspec-rails'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
