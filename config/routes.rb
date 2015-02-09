@@ -4,7 +4,18 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :edit]
 
   scope '/api' do 
-    resources :users, except: [:new, :edit]
+    # root to: 'users#index' 
+    resources :books
+
+    get 'users', to: 'users#index'
+
+    # get 'users/:id', to: 'users#destroy'
+
+    get 'users/signup', to: 'users#signup'
+
+    get 'login', to: 'users#login'
+
+ 
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

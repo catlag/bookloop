@@ -5,26 +5,56 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-
     render json: @users
   end
 
   # GET /users/1
   # GET /users/1.json
-  def show
-    render json: @user
+  def signup
+    @user = User.new
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
+    @user = User.create(user_params)
     if @user.save
-      render json: @user, status: :created, location: @user
+      session[:user_id] = @user.id
+      flash[:success] = "You are now logged in!"
+      redirect_to home_path
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render signup 
     end
+  end
+
+  def attempt_login
+
+    if params[:username].present? && params[:password].present?
+      found_user = User.where(username: params[:username]).first
+      if found_user
+        authorized_user = found_user.authenticate(params[:password])
+      end
+    end
+
+    if !found_user
+      flash.now[:alert] = "Invalid username"
+      render :login
+
+    elsif !authorized_user
+      flash.now[:alert] = "Invalid password"
+      render :login
+
+    else
+      session[:user_id] = authorized_user.id
+      flash[:success] = "You are now logged in."
+      redirect_to home_path
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to index_path
+    flash[:notice] = "Logged out"
+    
   end
 
   # PATCH/PUT /users/1
@@ -56,4 +86,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :password, :password_digest, :email, :zipcode)
     end
+  end
+
 end

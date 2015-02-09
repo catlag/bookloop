@@ -8,16 +8,16 @@
  *
  * Main module of the application.
  */
-angular
-  .module('bookloopApp', [
+var app = angular.module('bookloopApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-  ])
-  .config(function ($routeProvider) {
+  ]);
+
+ app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -27,7 +27,37 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl'
+      })
+      .when('/books', {
+        templateUrl: 'views/books.html',
+        controller: 'BooksCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+app.factory('Users', ['$resource', function($resource) {
+  return $resource('http://localhost\\:3000/api/users', null, {
+    'update': { method:'PUT' },
+    'post': { method: 'POST', url: 'http://localhost\\:3000/api/users/signup' }
+  });
+
+}]);
+
+app.factory('Books', ['$resource', function($resource) {
+  return $resource('http://localhost\\:3000/api/books', null, {
+    'update': { method:'PUT' },
+    'post': { method: 'POST', url: 'http://localhost\\:3000/api/books' }
+    // 'action': { method: 'PUT', url: 'http://localhost\\:3000/api/users/:id/action'}
+  });
+}]);
+
+
+
+
+
+

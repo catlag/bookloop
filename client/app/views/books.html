@@ -1,0 +1,19 @@
+<h1>Books</h1>
+ 
+<ul ng-repeat="book in books">
+  <li>
+  	{{book.title}}
+  	{{book.author}}
+  	<button ng-click="delete(user.id)">Delete</button>
+  </li>
+</ul>
+
+
+<form ng-submit="addUser()">
+    <input type="text" ng-model="newFirstName" placeholder="First Name">
+    <input type="text" ng-model="newLastName" placeholder="Last Name">
+    <input type="text" ng-model="newEmail" placeholder="Email">
+       <input type="text" ng-model="newPassword" placeholder="Password">
+    <input type="text" ng-model="newZipCode" placeholder="ZipCode">
+    <input type="submit" value="Add">
+</form>
