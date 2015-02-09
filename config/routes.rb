@@ -7,13 +7,7 @@ Rails.application.routes.draw do
     # root to: 'users#index' 
     resources :books
 
-    get 'users', to: 'users#index'
-
-    # get 'users/:id', to: 'users#destroy'
-
-    get 'users/signup', to: 'users#signup'
-
-    get 'login', to: 'users#login'
+    resources :users
 
  
   end
