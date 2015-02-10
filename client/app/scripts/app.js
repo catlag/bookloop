@@ -48,14 +48,24 @@ app.factory('Users', ['$resource', function($resource) {
 
 }]);
 
-app.factory('Books', ['$resource', function($resource) {
-  return $resource('http://localhost\\:3000/api/books', null, {
-    'update': { method:'PUT' },
-    'post': { method: 'POST', url: 'http://localhost\\:3000/api/books' }
-    // 'action': { method: 'PUT', url: 'http://localhost\\:3000/api/users/:id/action'}
-  });
-}]);
+// app.factory('Books', ['$resource', function($resource) {
+//   // return $resource('http://localhost\\:3000/api/books', null, {
+//   //   'update': { method:'PUT' },
+//   //   'post': { method: 'POST', url: 'http://localhost\\:3000/api/books' }
+//   //   // 'action': { method: 'PUT', url: 'http://localhost\\:3000/api/users/:id/action'}
+//   // });
+// }]);
 
+app.provider('Books', function(){
+  this.$get = ['$resource', function($resource){
+    var Book = $resource('http://localhost:3000/api/books', {}, {
+      update: {
+        method: 'POST'
+      }
+    });
+    return Book;
+  }];
+});
 
 
 
