@@ -14,7 +14,8 @@ var app = angular.module('bookloopApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angular-lodash'
   ]);
 
  app.config(function ($routeProvider) {
