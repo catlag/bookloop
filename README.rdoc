@@ -1,27 +1,25 @@
-== README
+# README 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Bookloop
 
-Things you may want to cover:
+#### The Goal:
 
-* Ruby version
+We want to revolutionize how books and knowledge are passed around. We believe people are a neighborhood's best resources and we wanted to create an online website that enables people to exchange books. Along with the ability to catalog one's own personal library, a user will be able to peruse another person's available books, message them, and offer an exchange. 
 
-* System dependencies
 
-* Configuration
+#### Technologies Used:
 
-* Database creation
+* Ruby on Rails - backend API
 
-* Database initialization
+* Angular (Yeoman)
 
-* How to run the test suite
+* Javascript
 
-* Services (job queues, cache servers, search engines, etc.)
+* Postgres DB
 
-* Deployment instructions
+* CSS
 
-* ...
+* HTML5
 
 
 Please feel free to use a different markup language if you do not plan to run
