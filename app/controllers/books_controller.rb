@@ -17,9 +17,11 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
+
     @book = Book.new(book_params)
 
-    binding.pry
+
+    # binding.pry
 
     if @book.save
       render json: @book, status: :created, location: @book

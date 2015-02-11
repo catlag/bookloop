@@ -34,7 +34,7 @@ angular.module('bookloopApp')
     // // 	// 	params: id
     // // 	// }).success(function(data){
     // // 	// 	console.log(data);
-    // // 	// }); 
+    // // 	// });
     // // };
 
     // $scope.addBook = function(){
