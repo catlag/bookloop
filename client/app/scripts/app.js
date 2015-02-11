@@ -63,7 +63,7 @@ app.provider('Books', function(){
       update: {
         method: 'POST',
         url: 'http://localhost:3000/api/books',
-        // params: {title: book.title},
+        params: {book: {year: '@book.year'}},
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       },
