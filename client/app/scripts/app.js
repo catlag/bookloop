@@ -86,7 +86,7 @@ app.provider('Users', function(){
 
       update: {
         method: 'POST',
-        url: 'http://localhost:3000/api/users/',
+        url: 'http://localhost:3000/api/users',
         // params: {title: user.title},
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}

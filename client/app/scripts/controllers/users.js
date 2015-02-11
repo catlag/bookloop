@@ -24,7 +24,7 @@ angular.module('bookloopApp')
     $scope.deleteUser = function(user){
       // $scope.id = user.id;
       console.log(user);
-      Users.delete(user);
+      Users.delete(user.id);
       // console.log(user);
       lodash.remove($scope.users, user);
     };
