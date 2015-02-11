@@ -42,13 +42,13 @@ var app = angular.module('bookloopApp', [
       });
   });
 
-app.factory('Users', ['$resource', function($resource) {
-  return $resource('http://localhost\\:3000/api/users', null, {
-    'update': { method:'PUT' },
-    'post': { method: 'POST', url: 'http://localhost\\:3000/api/users/signup' }
-  });
+// app.factory('Users', ['$resource', function($resource) {
+//   return $resource('http://localhost\\:3000/api/users', null, {
+//     'update': { method:'PUT' },
+//     'post': { method: 'POST', url: 'http://localhost\\:3000/api/users/signup' }
+//   });
 
-}]);
+// }]);
 
 // app.factory('Books', ['$resource', function($resource) {
 //   // return $resource('http://localhost\\:3000/api/books', null, {
@@ -82,7 +82,7 @@ app.provider('Books', function(){
 
 app.provider('Users', function(){
   this.$get = ['$resource', function($resource){
-    var User = $resource('http://localhost:3000/api/users', {user: '@user'}, {
+    var User = $resource('http://localhost:3000/api/users.json', {user: '@user'}, {
 
       update: {
         method: 'POST',
@@ -91,9 +91,9 @@ app.provider('Users', function(){
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       },
-      delete: {
+      destroy: {
         method: 'DELETE',
-        url: 'http://localhost:3000/api/users/:id',
+        url: 'http://localhost:3000/api/users/:id.json',
         id: '@user.id',
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}

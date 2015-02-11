@@ -12,25 +12,31 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def signup
     @user = User.new
+    render json @user, status: :created, location: @user
   end
 
   # POST /users
   # POST /users.json
   def create
+
+
     @user = User.create(user_params)
+    binding.pry
     if @user.save
-      session[:user_id] = @user.id
+      render json @user, status: :created, location: @user
+      # session[:id] = @user.id
       flash[:success] = "You are now logged in!"
-      redirect_to home_path
+      # redirect_to home_path
     else
-      render signup 
+      render json: @book.errors, status: :unprocessable_entity
+      # render signup
     end
   end
 
   def attempt_login
 
-    if params[:username].present? && params[:password].present?
-      found_user = User.where(username: params[:username]).first
+    if params[:email].present? && params[:password].present?
+      found_user = User.where(email: params[:email]).first
       if found_user
         authorized_user = found_user.authenticate(params[:password])
       end
@@ -54,7 +60,7 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     redirect_to index_path
     flash[:notice] = "Logged out"
-    
+
   end
 
   # PATCH/PUT /users/1

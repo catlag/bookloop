@@ -8,8 +8,8 @@ angular.module('bookloopApp')
     $scope.users = Users.query();
 
     $scope.createUser = function(user){
-      $scope.users.push($scope.user);
       $scope.user.$save();
+      $scope.users.push($scope.user);
       $scope.user = new Users();
       console.log($scope.user);
     };
@@ -31,10 +31,10 @@ angular.module('bookloopApp')
 
     // $scope.deleteUser = function(user){
     //   user.delete({id: user.id}, function(){
-    //     delete $scope.users[user.id]
+    //     delete $scope.users(user);
     //   });
-    //   // $scope.users.splice(index, 1);
-    //   // console.log(index);
+    // //   // $scope.users.splice(index, 1);
+    // //   // console.log(index);
     // };
   }]);
 

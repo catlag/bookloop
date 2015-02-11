@@ -14,10 +14,9 @@
 
 <ul ng-repeat="user in users">
   <li>
-  	<a href="{{user.url}}">{{user.id}}</a>
   	{{user.first_name}}
   	{{user.last_name}}<br>
     {{user.email}}<br>
-    <button ng-click="deleteUser(user.id)">Delete</button>
+    <button ng-click="deleteUser(user)">Delete</button>
   </li>
 </ul>
