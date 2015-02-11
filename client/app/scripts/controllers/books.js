@@ -7,9 +7,12 @@ angular.module('bookloopApp')
   	$scope.book = new Books();
   	$scope.books = Books.query();
 
-  	$scope.update = function(book){
-  		$scope.book = book.title;
-  		$scope.book.$save(book);
+
+  	$scope.update = function(newBook){
+
+  		$scope.book = newBook;
+  		console.log($scope.book);
+      Books.save(newBook);
   		console.log($scope.book);
   		$scope.books.push($scope.book);
   		$scope.book = new Books();

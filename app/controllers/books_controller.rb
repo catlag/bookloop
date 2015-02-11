@@ -17,8 +17,12 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
+    # @book = Book.new(book_params)
+    @book = Book.new(title: params[:title], author: params[:author], year: params[:year], ISBN: params[:isbn])
+    @book.save()
+    # binding.pry
 
-    @book = Book.new(book_params)
+    # @book = Book.new(book_params)
 
 
     # binding.pry
@@ -58,6 +62,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title)
+      params.require(:book).permit(:title,:author,:year,:ISBN)
     end
 end
