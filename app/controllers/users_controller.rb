@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
 
-
     @user = User.create(user_params)
     binding.pry
     if @user.save
@@ -54,7 +53,9 @@ class UsersController < ApplicationController
       session[:user_id] = authorized_user.id
       flash[:success] = "You are now logged in."
       redirect_to home_path
-  end
+    end
+
+
 
   def logout
     session[:user_id] = nil
@@ -78,6 +79,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
 
     head :no_content

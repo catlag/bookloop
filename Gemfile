@@ -22,6 +22,8 @@ gem 'rack-cors'
 
 gem 'rspec'
 gem 'rspec-rails'
+gem 'pg'
+gem 'devise_token_auth'
 
 
 # To use Jbuilder templates for JSON

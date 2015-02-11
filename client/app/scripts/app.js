@@ -82,18 +82,18 @@ app.provider('Books', function(){
 
 app.provider('Users', function(){
   this.$get = ['$resource', function($resource){
-    var User = $resource('http://localhost:3000/api/users.json', {user: '@user'}, {
+    var User = $resource('http://localhost:3000/api/users/', {user: '@user'}, {
 
       update: {
         method: 'POST',
-        url: 'http://localhost:3000/api/users',
+        url: 'http://localhost:3000/api/users/',
         // params: {title: user.title},
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       },
-      destroy: {
+      delete: {
         method: 'DELETE',
-        url: 'http://localhost:3000/api/users/:id.json',
+        url: 'http://localhost:3000/api/users/:id',
         id: '@user.id',
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -101,6 +101,48 @@ app.provider('Users', function(){
     });
     return User;
   }];
+});
+
+
+
+
+
+
+
+
+app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope) {
+  var ref = new Firebase(FIREBASE_URL);
+  var auth = $firebaseSimpleLogin(ref);
+
+  var Auth = {
+    register: function (user) {
+      return auth.$createUser(user.email, user.password);
+    },
+    login: function (user) {
+      return auth.$login('password', user);
+    },
+    logout: function () {
+      auth.$logout();
+    },
+    resolveUser: function() {
+      return auth.$getCurrentUser();
+    },
+    signedIn: function() {
+      return !!Auth.user.provider;
+    },
+    user: {}
+  };
+
+  $rootScope.$on('$firebaseSimpleLogin:login', function(e, user) {
+    console.log('logged in');
+    angular.copy(user, Auth.user);
+  });
+  $rootScope.$on('$firebaseSimpleLogin:logout', function() {
+    console.log('logged out');
+    angular.copy({}, Auth.user);
+  });
+
+  return Auth;
 });
 
 
