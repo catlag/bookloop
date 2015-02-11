@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-
+  # respond_to :json
   # GET /users
   # GET /users.json
   def index
@@ -18,9 +18,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-
     @user = User.create(user_params)
-    binding.pry
+    # binding.pry
     if @user.save
       render json @user, status: :created, location: @user
       # session[:id] = @user.id
@@ -80,7 +79,11 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
+
+    binding.pry
     @user.destroy
+
+    binding.pry
 
     head :no_content
   end
