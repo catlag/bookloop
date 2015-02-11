@@ -1,12 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name fakeLunchHubApp.controller:GroupsCtrl
- * @description
- * # GroupsCtrl
- * Controller of the fakeLunchHubApp
- */
+
 angular.module('bookloopApp')
   .controller('UsersCtrl', ['$scope', 'Users', '$http', 'lodash', function ($scope, Users, $http, lodash) {
 
@@ -17,7 +11,7 @@ angular.module('bookloopApp')
       $scope.users.push($scope.user);
       $scope.user.$save();
       $scope.user = new Users();
-      console.log($scope.user)
+      console.log($scope.user);
     };
 
     // $scope.save = function(){

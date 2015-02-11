@@ -1,6 +1,5 @@
 'use strict';
-/* global app:true */
-/* exported app */
+
 /**
  * @ngdoc overview
  * @name bookloopApp
