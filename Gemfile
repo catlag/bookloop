@@ -8,7 +8,7 @@ gem 'rails-api'
 gem 'spring', :group => :development
 
 
-gem 'sqlite3'
+# gem 'sqlite3'
 
 gem 'pry-rails'
 
@@ -21,8 +21,8 @@ gem 'json'
 gem 'rack-cors'
 
 gem 'rspec'
-gem 'rspec-rails'
-gem 'pg'
+
+gem 'pg' 
 gem 'devise_token_auth'
 
 
