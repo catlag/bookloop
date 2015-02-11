@@ -60,11 +60,12 @@ var app = angular.module('bookloopApp', [
 
 app.provider('Books', function(){
   this.$get = ['$resource', function($resource){
-    var Book = $resource('http://localhost:3000/api/books', {book: '@book'}, {
+    var Book = {};
+    Book = $resource('http://localhost:3000/api/books', null, {
       update: {
         method: 'POST',
         url: 'http://localhost:3000/api/books',
-        params: {book: {year: '@book.year'}},
+        params: {book: '@book'},
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       },
@@ -76,7 +77,9 @@ app.provider('Books', function(){
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }
     });
+    console.log(Book);
     return Book;
+
   }];
 });
 
