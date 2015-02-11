@@ -3,16 +3,23 @@ Rails.application.routes.draw do
   resources :books, except: [:new, :edit]
   resources :users, except: [:new, :edit]
 
-  scope '/api' do 
-    # root to: 'users#index' 
+  scope '/api' do
+    # root to: 'users#index'
     resources :books
 
-    delete '/books/?id=:id' => 'books#destroy' 
+    delete '/books/?id=:id' => 'books#destroy'
 
     resources :users
 
- 
+
+
+    get 'user/login' => 'user#attempt_login'
+    get 'user/logout' => 'user#logout'
+
+    delete '/users/?id=:id' => 'users#destroy'
+
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

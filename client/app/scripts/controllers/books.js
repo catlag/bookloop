@@ -19,7 +19,7 @@ angular.module('bookloopApp')
   		console.log($scope.id);
   		Books.delete(book);
   		// console.log(book);
-  		lodash.remove($scope.book, book);
+  		lodash.remove($scope.books, book);
   	};
 
     // $scope.books = Books.query();
@@ -32,7 +32,7 @@ angular.module('bookloopApp')
     // // 	// 	params: id
     // // 	// }).success(function(data){
     // // 	// 	console.log(data);
-    // // 	// }); 
+    // // 	// });
     // // };
 
     // $scope.addBook = function(){
