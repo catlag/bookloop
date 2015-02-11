@@ -1,24 +1,27 @@
 <h1>Books</h1>
 
+{{books.length}}
 
-<form ng-submit="addBook()">
-    <input type="text" ng-model="newBookTitle" placeholder="Title">
-    <input type="text" ng-model="newBookAuthor" placeholder="Author">
-    <input type="text" ng-model="newYear" placeholder="Year">
-    <input type="text" ng-model="newISBN" placeholder="ISBN">
+<form ng-submit="save()">
+    <input type="text" ng-model="book.title" placeholder="Title">
+    <input type="text" ng-model="book.author" placeholder="Author">
+    <input type="text" ng-model="book.year" placeholder="Year">
+    <input type="text" ng-model="book.ISBN" placeholder="ISBN">
     <input type="submit" value="Add">
 </form>
 
 <br> 
-<ul ng-repeat="book in books">
+<table ng-show"books.length"> 
+		<ul ng-repeat="book in books">
 
-  	<strong>Title:</strong>  {{book.title}}
-  	<br>
-  	<strong>Author:</strong> Author: {{book.author}}
-  	<br>
-  	<strong>Year:</strong> {{book.year}}
-  	<br>
-  	<strong>ISBN:</strong> {{book.ISBN}}
+		  	<strong>Title:</strong>  {{book.title}}
+		  	<br>
+		  	<strong>Author:</strong> {{book.author}}
+		  	<br>
+		  	<strong>Year:</strong> {{book.year}}
+		  	<br>
+		  	<strong>ISBN:</strong> {{book.ISBN}}
+		  	<button ng-click="delete(book)">Delete</button>
+		</ul>
 
-</ul>
-
+</table>

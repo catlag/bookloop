@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     # root to: 'users#index' 
     resources :books
 
+    delete '/books/?id=:id' => 'books#destroy' 
+
     resources :users
 
  

@@ -1,20 +1,25 @@
 'use strict';
 
 angular.module('bookloopApp')
-  .controller('BooksCtrl', ['$scope', 'Books', '$http',  function ($scope, Books, $http) {
+  .controller('BooksCtrl', ['$scope', 'Books', '$http', 'lodash',  function ($scope, Books, $http, lodash) {
+
 
   	$scope.book = new Books();
   	$scope.books = Books.query();
 
   	$scope.save = function(){
   		$scope.book.$save();
+  		console.log($scope.book);
   		$scope.books.push($scope.book);
   		$scope.book = new Books();
   	};
 
   	$scope.delete = function(book){
-  		Book.delete(book);
-  		_.remove($scope.book, book);
+  		$scope.id = book.id;
+  		console.log($scope.id);
+  		Books.delete(book);
+  		// console.log(book);
+  		lodash.remove($scope.book, book);
   	};
 
     // $scope.books = Books.query();
