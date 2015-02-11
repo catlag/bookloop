@@ -1,5 +1,6 @@
 'use strict';
-
+/* global app:true */
+/* exported app */
 /**
  * @ngdoc overview
  * @name bookloopApp
@@ -8,6 +9,7 @@
  *
  * Main module of the application.
  */
+
 var app = angular.module('bookloopApp', [
     'ngAnimate',
     'ngCookies',
@@ -69,13 +71,36 @@ app.provider('Books', function(){
       },
       delete: {
         method: 'DELETE',
-        url: 'http://localhost:3000/api/books/:id',
+        url: 'http://localhost:3000/api/books/:id.json',
         id: '@book.id',
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }
     });
     return Book;
+  }];
+});
+
+app.provider('Users', function(){
+  this.$get = ['$resource', function($resource){
+    var User = $resource('http://localhost:3000/api/users', {user: '@user'}, {
+
+      update: {
+        method: 'POST',
+        url: 'http://localhost:3000/api/users',
+        // params: {title: user.title},
+        transformRequest: [],
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      },
+      delete: {
+        method: 'DELETE',
+        url: 'http://localhost:3000/api/users/:id',
+        id: '@user.id',
+        transformRequest: [],
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      }
+    });
+    return User;
   }];
 });
 

@@ -14,3 +14,9 @@ Book.create(title:"The Tale of Peter Rabbit", author:"Beatrix Potter", year:"190
 Book.create(title:"Space Jam: A Novelization", author:"Francine Hughes", year:"1997", ISBN:"9780140385922")
 Book.create(title:"Corduroy", author:"Don Freeman", year:"1968", ISBN:"9780670063420")
 Book.create(title:"Bitch Are You Retarded?: Stop Being a Dumbass! Either He Loves You, He's in Love with You, or You're Just Something to Do for Right Now. Either Way, Learn The Difference, And When To Walk Away.", author:"Carlos J. Lee", year:"2012", ISBN:"1468557076")
+
+User.create(first_name: "Linda", last_name: "Martinez", password: "angular", email: "lmartinez@gmail.com", zipcode: "94103");
+User.create(first_name: "Calvin", last_name: "Jhunjhnuwala", password: "angular", email: "cj@gmail.com", zipcode: "94107");
+User.create(first_name: "Matt", last_name: "Gray", password: "angular", email: "mg@gmail.com", zipcode: "94105");
+User.create(first_name: "Ryan", last_name: "Shim", password: "angular", email: "rs@gmail.com", zipcode: "94110");
+User.create(first_name: "Luke", last_name: "Skywalker", password: "angular", email: "ls@gmail.com", zipcode: "92656");
