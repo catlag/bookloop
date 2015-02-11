@@ -23,6 +23,7 @@ gem 'rack-cors'
 gem 'rspec'
 gem 'rspec-rails'
 
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

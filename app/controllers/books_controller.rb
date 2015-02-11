@@ -17,7 +17,9 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
+    # @book = Book.new()
+
+    binding.pry
 
     if @book.save
       render json: @book, status: :created, location: @book
@@ -41,6 +43,7 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
+    @book = Book.find(params[:id])
     @book.destroy
 
     head :no_content

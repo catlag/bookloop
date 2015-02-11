@@ -15,7 +15,7 @@ var app = angular.module('bookloopApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'angular-lodash'
+    'ngLodash'
   ]);
 
  app.config(function ($routeProvider) {
@@ -59,9 +59,20 @@ app.factory('Users', ['$resource', function($resource) {
 
 app.provider('Books', function(){
   this.$get = ['$resource', function($resource){
-    var Book = $resource('http://localhost:3000/api/books', {}, {
+    var Book = $resource('http://localhost:3000/api/books', {book: '@book'}, {
       update: {
-        method: 'POST'
+        method: 'POST',
+        url: 'http://localhost:3000/api/books',
+        // params: {title: book.title},
+        transformRequest: [],
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      },
+      delete: {
+        method: 'DELETE',
+        url: 'http://localhost:3000/api/books/:id',
+        id: '@book.id',
+        transformRequest: [],
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }
     });
     return Book;
