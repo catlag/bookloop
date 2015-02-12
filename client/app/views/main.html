@@ -5,7 +5,16 @@
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
     Always a pleasure scaffolding your apps.
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <form novalidate class="css-form">
+    <div class="form group">
+      <label for="book">Search For Books</label>
+      <input class="form-control" type="book" ng-model="book" required /><br />
+      <button type="submit" class="btn btn-default" ng-click="search(book)">Search</button>
+    </div>
+  </form>
+
+
+ <!--  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p> -->
 </div>
 
 <div class="row marketing">

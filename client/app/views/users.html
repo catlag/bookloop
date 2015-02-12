@@ -1,14 +1,13 @@
 <h1>Users</h1>
 <h2>hi</h2>
 
-<h4>Here's a list of our current users </h4>
 
-<ul ng-repeat="user in users">
-  <li>
-    {{user.id}}
-  	{{user.first_name}}
-  	{{user.last_name}}<br>
-    {{user.email}}<br>
-    <button ng-click="deleteUser(user)">Delete</button>
-  </li>
-</ul>
+        <strong>Name:</strong>  {{user.first_name}}
+      {{user.last_name}}
+        <br>
+        <strong>Email:</strong> {{user.email}}
+        <br>
+        <button ng-click="deleteUser(user)">Delete</button>
+    </ul>
+
+</table>

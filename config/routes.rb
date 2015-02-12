@@ -12,9 +12,11 @@ Rails.application.routes.draw do
     resources :users
 
 
+
     # get 'user/signup' => 'user#signup'
     get 'user/login' => 'user#attempt_login'
     get 'user/logout' => 'user#logout'
+
 
     delete '/users/?id=:id' => 'users#destroy'
 
