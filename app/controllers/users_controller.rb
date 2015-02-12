@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   # respond_to :json
   # GET /users
   # GET /users.json
+
+
   def index
     @users = User.all
     render json: @users
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.create(user)
+    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], password: params[:password], email: params[:email], zipcode: params[:zipcode])
     # binding.pry
     if @user.save
       render json @user, status: :created, location: @user

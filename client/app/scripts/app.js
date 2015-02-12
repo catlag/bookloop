@@ -39,6 +39,14 @@ var app = angular.module('bookloopApp', [
         templateUrl: 'views/books.html',
         controller: 'BooksCtrl'
       })
+      .when('/user/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'UsersCtrl'
+      })
+      .when('/user/login', {
+        templateUrl: 'views/login.html',
+        controller: 'UsersCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -91,9 +99,9 @@ app.provider('Books', function(){
 app.provider('Users', function(){
   this.$get = ['$resource', function($resource){
     var User = $resource('/api/users', null, {
-      update: {
+      create: {
         method: 'POST',
-        url: '/api/users/',
+        url: '/api/users',
         params: {user: '@user'},
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
