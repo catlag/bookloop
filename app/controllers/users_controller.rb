@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.create(user_params)
+    @user = User.create(user)
     # binding.pry
     if @user.save
       render json @user, status: :created, location: @user
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       flash[:success] = "You are now logged in!"
       # redirect_to home_path
     else
-      render json: @book.errors, status: :unprocessable_entity
+      render json: @user.errors, status: :unprocessable_entity
       # render signup
     end
   end
@@ -43,24 +43,20 @@ class UsersController < ApplicationController
     if !found_user
       flash.now[:alert] = "Invalid username"
       render :login
-
     elsif !authorized_user
       flash.now[:alert] = "Invalid password"
       render :login
-
     else
       session[:user_id] = authorized_user.id
       flash[:success] = "You are now logged in."
       redirect_to home_path
     end
-
-
+  end
 
   def logout
     session[:user_id] = nil
     redirect_to index_path
     flash[:notice] = "Logged out"
-
   end
 
   # PATCH/PUT /users/1
@@ -86,13 +82,12 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :password, :password_digest, :email, :zipcode)
-    end
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :password, :password_digest, :email, :zipcode)
   end
 
 end

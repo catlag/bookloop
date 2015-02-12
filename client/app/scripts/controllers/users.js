@@ -2,7 +2,7 @@
 
 
 angular.module('bookloopApp')
-  .controller('UsersCtrl', ['$scope', 'Users', 'lodash', function ($scope, Users, lodash) {
+  .controller('UsersCtrl', ['$scope', 'Users', '$http', 'lodash', function ($scope, Users, $http, lodash) {
 
     $scope.user = new Users();
     $scope.users = Users.query();
