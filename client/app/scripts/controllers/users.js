@@ -21,16 +21,11 @@ angular.module('bookloopApp')
     //   $scope.users.push($scope.user);
     //   $scope.user = new Users();
     // };
-<<<<<<< HEAD
-    $scope.delete = function(user){
-      $scope.id = user.id;
-      console.log($scope.id);
-=======
+
 
     $scope.deleteUser = function(user){
       $scope.id = user.id;
       console.log(user);
->>>>>>> f29718b171532ff83e143467878d0ea08374f2a1
       Users.delete(user);
       // console.log(user);
 
