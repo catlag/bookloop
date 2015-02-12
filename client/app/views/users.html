@@ -1,17 +1,6 @@
 <h1>Users</h1>
 <h2>hi</h2>
 
-<form ng-submit="createUser(user)">
-  <input type="text" ng-model="user.first_name" placeholder="First Name">
-  <input type="text" ng-model="user.last_name" placeholder="Last Name">
-  <input type="text" ng-model="user.email" placeholder="Email">
-  <input type="text" ng-model="user.zipcode" placeholder="Zip Code">
-  <input type="password" ng-model="user.password" placeholder="Password">
-  <input type="submit" value="Add User">
-</form>
-
-<table ng-show"users.length">
-    <ul ng-repeat="user in users">
 
         <strong>Name:</strong>  {{user.first_name}}
       {{user.last_name}}
