@@ -1,5 +1,7 @@
 'use strict';
 
+/* global app:true */
+/* exported app */
 /**
  * @ngdoc overview
  * @name bookloopApp
@@ -43,7 +45,7 @@ var app = angular.module('bookloopApp', [
   });
 
 app.factory('Users', function($resource) {
-  return $resource('/api/users/:id.json', { id: '@user.id' },
+  return $resource('/api/users/:id', { id: '@user.id' },
   {
     'create': {method: 'POST'},
     'index': {method: 'GET'},
@@ -90,9 +92,9 @@ app.provider('Users', function(){
   this.$get = ['$resource', function($resource){
     var User = $resource('http://localhost:3000/api/users', {user: '@user'}, {
       update: {
-        method: 'GET',
-        url: 'http://localhost:3000/api/users/:id',
-        // params: {title: user.title},
+        method: 'POST',
+        url: 'http://localhost:3000/api/users',
+        params: {user: '@user'},
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       },
@@ -104,6 +106,7 @@ app.provider('Users', function(){
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }
     });
+    // console.log();
     return User;
   }];
 });

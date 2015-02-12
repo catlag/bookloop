@@ -9,11 +9,10 @@ angular.module('bookloopApp')
 
 
   	$scope.update = function(newBook){
-
   		$scope.book = newBook;
-  		console.log($scope.book);
+  		// console.log($scope.book);
       Books.save(newBook);
-  		console.log($scope.book);
+  		// console.log($scope.book);
   		$scope.books.push($scope.book);
   		$scope.book = new Books();
   	};
