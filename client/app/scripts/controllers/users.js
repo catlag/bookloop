@@ -7,11 +7,12 @@ angular.module('bookloopApp')
     $scope.user = new Users();
     $scope.users = Users.query();
 
-    $scope.createUser = function(user){
-      $scope.user.$save();
+    $scope.createUser = function(newUser){
+      $scope.user = newUser;
+      // console.log($scope.user);
+      Users.save(newUser);
       $scope.users.push($scope.user);
       $scope.user = new Users();
-      console.log(user);
     };
 
     // $scope.save = function(){
@@ -20,11 +21,19 @@ angular.module('bookloopApp')
     //   $scope.users.push($scope.user);
     //   $scope.user = new Users();
     // };
+<<<<<<< HEAD
     $scope.delete = function(user){
       $scope.id = user.id;
       console.log($scope.id);
+=======
+
+    $scope.deleteUser = function(user){
+      $scope.id = user.id;
+      console.log(user);
+>>>>>>> f29718b171532ff83e143467878d0ea08374f2a1
       Users.delete(user);
       // console.log(user);
+
       lodash.remove($scope.users, user);
     };
 

@@ -1,5 +1,7 @@
 'use strict';
 
+/* global app:true */
+/* exported app */
 /**
  * @ngdoc overview
  * @name bookloopApp
@@ -42,13 +44,16 @@ var app = angular.module('bookloopApp', [
       });
   });
 
-// app.factory('Users', ['$resource', function($resource) {
-//   return $resource('http://localhost\\:3000/api/users', null, {
+// app.factory('Users', function($resource) {
+//   return $resource('/api/users/:id', { id: '@user.id' },
+//   {
+//     'create': {method: 'POST'},
+//     'index': {method: 'GET'},
+//     'show': { method: 'GET'},
 //     'update': { method:'PUT' },
-//     'post': { method: 'POST', url: 'http://localhost\\:3000/api/users/signup' }
+//     'destroy': {method: 'DELETE'}
 //   });
-
-// }]);
+// });
 
 // app.factory('Books', ['$resource', function($resource) {
 //   // return $resource('http://localhost\\:3000/api/books', null, {
@@ -61,17 +66,17 @@ var app = angular.module('bookloopApp', [
 app.provider('Books', function(){
   this.$get = ['$resource', function($resource){
     var Book = {};
-    Book = $resource('http://localhost:3000/api/books', null, {
+    Book = $resource('/api/books', null, {
       update: {
         method: 'POST',
-        url: 'http://localhost:3000/api/books',
+        url: '/api/books',
         params: {book: '@book'},
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       },
       delete: {
         method: 'DELETE',
-        url: 'http://localhost:3000/api/books/:id.json',
+        url: '/api/books/:id.json',
         id: '@book.id',
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -84,19 +89,18 @@ app.provider('Books', function(){
 
 app.provider('Users', function(){
   this.$get = ['$resource', function($resource){
-    var User = {};
-    User = $resource('http://localhost:3000/api/users', null, {
+    var User = $resource('/api/users', null, {
       update: {
         method: 'POST',
-        url: 'http://localhost:3000/api/users',
+        url: '/api/users/',
         params: {user: '@user'},
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       },
       delete: {
         method: 'DELETE',
-        url: 'http://localhost:3000/api/users/:id.json',
-        id: '@book.id',
+        id: '@user.id',
+        url: '/api/users/:id.json',
         transformRequest: [],
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }
