@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>AHHHH</h1>
 
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
@@ -8,13 +8,33 @@
   <form novalidate class="css-form">
     <div class="form group">
       <label for="book">Search For Books</label>
-      <input class="form-control" type="book" ng-model="book" required /><br />
+      <input class="form-control" type="book" ng-model="book" autofocus required /><br />
       <button type="submit" class="btn btn-default" ng-click="search(book)">Search</button>
     </div>
   </form>
-
-
  <!--  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p> -->
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-group" ng-submit="login(user)">
+          <input class="form-control" type="text" ng-model="user.email" placeholder="Email"><br>
+          
+          <input class="form-control" type="password" ng-model="user.password" placeholder="Password"><br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" ng-click="login(user)"class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row marketing">
