@@ -19,40 +19,38 @@
 
 
 angular.module('bookloopApp')
-  .controller('MainCtrl', ['$scope', 'Books', '$http', 'lodash', 'transformRequestAsFormPost', function ($scope, Books, $http, lodash, transformRequestAsFormPost) {
+  .controller('MainCtrl', ['$scope', 'Books', '$http', 'lodash', function ($scope, Books, $http, lodash) {
 
   	$scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+$scope.user = {};
 
  $scope.login = function(user){
- 	console.log(user);
- 	console.log(user.email);
- 	console.log(user.password);
- 	$scope.cfdump = '';
+ 	$scope.user = user;
     var request = $http({
-              method: "POST",
-              url: "https://localhost:3000/users/login",
-              transformRequest: transformRequestAsFormPost,
-              data: {
-                  email: user.email,
-                  password: user.password
-              }
+              method: 'POST',
+              url: 'http://localhost:3000/api/users/login',
+              // transformRequest: transformRequestAsFormPost,
+              data: $.params({
+                  email: this.user.email,
+                  password: this.user.password
+              }),
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'}
           });
           // Store the data-dump of the FORM scope.
           request.success(
-              function( html ) {
 
-                  $scope.cfdump = html;
+              function(data) {
+              		// console.log('hi');
+              		console.log(data);
+                  // $scope.cfdump = html;
 
               }
           );
  };  
-
-
-
 
 
 

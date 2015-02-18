@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
 
     # get 'user/signup' => 'user#signup'
-    get 'user/login' => 'user#attempt_login'
-    get 'user/logout' => 'user#logout'
+    post 'users/login' => 'users#attempt_login'
+    get 'users/logout' => 'users#logout'
 
 
     delete '/users/?id=:id' => 'users#destroy'

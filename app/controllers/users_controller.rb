@@ -35,23 +35,37 @@ class UsersController < ApplicationController
 
   def attempt_login
 
+    @user = params[:email]
+
+    # binding.pry
+
     if params[:email].present? && params[:password].present?
       found_user = User.where(email: params[:email]).first
       if found_user
         authorized_user = found_user.authenticate(params[:password])
       end
     end
+    # binding.pry
 
     if !found_user
-      flash.now[:alert] = "Invalid username"
-      render :login
+      message = {:msg => "Invalid Username"}
+      message.to_json
+      # flash.now[:alert] = "Invalid username"
+      # render :login
+      render json: message
     elsif !authorized_user
-      flash.now[:alert] = "Invalid password"
-      render :login
+      message = {:msg => "Invalid Password"}
+      message.to_json
+      # flash.now[:alert] = "Invalid password"
+      # render :login
+      render json: message
     else
-      session[:user_id] = authorized_user.id
+      message = {:msg => "Logged In"}
+      message.to_json
+      # session[:user_id] = authorized_user.id
       flash[:success] = "You are now logged in."
-      redirect_to home_path
+      # redirect_to home_path
+      render json: authorized_user.id
     end
   end
 
